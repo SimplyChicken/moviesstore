@@ -1,0 +1,31 @@
+<!-- Feedback Popup Modal -->
+<div id="feedbackModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
+  <div style="background:#fff; padding:20px; border-radius:8px; min-width:300px;">
+    <h2>Thank you for your purchase!</h2>
+    <form id="feedbackForm">
+      <label for="name">Name (optional):</label><br>
+      <input type="text" id="name" name="name" style="width:100%;"><br><br>
+      <label for="comment">Comment:</label><br>
+      <textarea id="comment" name="comment" rows="4" style="width:100%;" required></textarea><br><br>
+      <button type="submit">Submit Feedback</button>
+      <button type="button" onclick="closeModal()">Close</button>
+    </form>
+  </div>
+</div>
+<script>
+function showModal() {
+  document.getElementById('feedbackModal').style.display = 'flex';
+}
+function closeModal() {
+  document.getElementById('feedbackModal').style.display = 'none';
+}
+document.getElementById('feedbackForm').onsubmit = function(e) {
+  e.preventDefault();
+  // You can add AJAX here to send feedback to the server
+  alert('Thank you for your feedback!');
+  closeModal();
+}
+// Call showModal() after purchase is complete
+// For demo, you can call showModal() manually
+// showModal();
+</script>

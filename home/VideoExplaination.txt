@@ -1,0 +1,24 @@
+What we want based off the user story:
+ As a user, I'd like to post a "include movie petition" (on a separate page)
+ in the movie store so that all users can vote on whether they want to see the admin 
+ add a certain movie to the catalog.
+
+- Page to hold all petitions
+- Ability to create petition
+- Ability to vote on petition
+
+Steps:
+- create page: python3 manage.py startapp petitions
+- Add to /moviesstore/settings.py --> INSTALLED APPS 'petitions'
+- Add to /moviesstore/urls.py --> urlpatterns path('petitions/', include('petitions.urls'))   
+- In petitions add a urls.py file and add --> path('', views.index, name='petitions.index'),
+- Create and define views.py in petitions, include button to add review (Good use of Copilot)
+    - Also create the popup to add a review + information and what it will look like when posted
+
+- Create a models.py in petitions
+- Save Name, Description, and votes to a database.
+- List all petitions currently active
+
+- Make all petitions appear based on the database
+
+from django.db import models

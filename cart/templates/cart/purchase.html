@@ -14,4 +14,57 @@
     </div>
   </div>
 </div>
+
+<!-- Feedback Popup Modal -->
+<div id="feedbackModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); justify-content:center; align-items:center;">
+  <div style="background:#fff; padding:20px; border-radius:8px; min-width:300px;">
+    <h2>Thank you for your purchase!</h2>
+    <form id="feedbackForm">
+      <label for="name">Name (optional):</label><br>
+      <input type="text" id="name" name="name" style="width:100%;"><br><br>
+      <label for="comment">Comment:</label><br>
+      <textarea id="comment" name="comment" rows="4" style="width:100%;" required></textarea><br><br>
+      <button type="submit">Submit Feedback</button>
+      <button type="button" onclick="closeModal()">Cancel</button>
+    </form>
+  </div>
+</div>
+
+<script>
+// Call this after purchase is successful
+window.onload = function() {
+  if (typeof showModal === 'function') {
+    showModal();
+  }
+}
+
+function showModal() {
+  document.getElementById('feedbackModal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('feedbackModal').style.display = 'none';
+}
+
+document.getElementById('feedbackForm').onsubmit = function(e) {
+  e.preventDefault();
+  var formData = new FormData(this);
+  fetch('/reviews/submit/', {
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': '{{ csrf_token }}'
+    },
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert('Thank you for your feedback!');
+      closeModal();
+    } else {
+      alert('Failed to submit feedback.');
+    }
+  });
+}
+</script>
 {% endblock content %}
