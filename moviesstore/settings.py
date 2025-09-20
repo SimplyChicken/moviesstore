@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=)2#x@q#y@zbno!0o*#3i#^mgshv%!^siiq045dp#2@xotrmz2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gleiter3.pythonanywhere.com']
+ALLOWED_HOSTS = ['gleiter3.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'cart',
     'reviews',
+    'petitions',
 ]
 
 MIDDLEWARE = [

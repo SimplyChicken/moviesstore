@@ -21,4 +21,12 @@ Steps:
 
 - Make all petitions appear based on the database
 
-from django.db import models
+- Push to production:
+git add .
+git commit -m "petitionApp"
+git push origin main
+
+- Pull to server
+git pull origin main
+python manage.py makemigrations
+python manage.py migrate
