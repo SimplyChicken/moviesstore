@@ -1,11 +1,5 @@
 What we want based off the user story:
- As a user, I'd like to post a "include movie petition" (on a separate page)
- in the movie store so that all users can vote on whether they want to see the admin 
- add a certain movie to the catalog.
-
-- Page to hold all petitions
-- Ability to create petition
-- Ability to vote on petition
+ 
 
 Steps:
 - create page: python3 manage.py startapp petitions
